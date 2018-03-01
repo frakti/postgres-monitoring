@@ -6,3 +6,11 @@ services:
      - "9090:9090"
     volumes:
      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+    links:
+     - postgres_exporter
+  postgres_exporter:
+    image: wrouesnel/postgres_exporter
+    ports:
+     - "9187:9187"
+    environment:
+     - DATA_SOURCE_NAME="postgresql://postgres:password@localhost:5432/?sslmode=disable"
