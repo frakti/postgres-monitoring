@@ -8,4 +8,4 @@ scrape_configs:
   metrics_path: /metrics
   static_configs:
     - targets:
-      - localhost:9187
+      - postgres_exporter:9187

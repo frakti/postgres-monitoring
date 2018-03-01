@@ -1,13 +1,13 @@
 version: "3"
 services:
-  web:
+  prometheus:
     image: prom/prometheus:v2.1.0
     ports:
      - "9090:9090"
     volumes:
      - ./prometheus.yml:/etc/prometheus/prometheus.yml
-    links:
-     - postgres_exporter
+
+
   postgres_exporter:
     image: wrouesnel/postgres_exporter
     ports:
