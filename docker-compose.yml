@@ -9,10 +9,14 @@ services:
 
   postgres_exporter:
     image: wrouesnel/postgres_exporter
+    command:
+       - --extend.query-path=/etc/postgres_exporter/queries.yml
     ports:
      - "9187:9187"
     environment:
      - DATA_SOURCE_NAME="postgresql://postgres:password@localhost:5432/?sslmode=disable"
+    volumes:
+     - ./postgres-queries.yml:/etc/postgres_exporter/queries.yml
 
   grafana:
     image: grafana/grafana:5.0.0
