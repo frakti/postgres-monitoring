@@ -22,3 +22,5 @@ services:
     image: grafana/grafana:5.0.0
     ports:
      - "3000:3000"
+    volumes:
+     - ./grafana/datasources.yml:/etc/grafana/provisioning/datasources/queries.yml
