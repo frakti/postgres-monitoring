@@ -23,4 +23,6 @@ services:
     ports:
      - "3000:3000"
     volumes:
-     - ./grafana/datasources.yml:/etc/grafana/provisioning/datasources/queries.yml
+     - ./grafana/datasources.yml:/etc/grafana/provisioning/datasources/datasources.yml
+     - ./grafana/dashboards.yml:/etc/grafana/provisioning/dashboards/dasbhoards.yml
+     - ./grafana/dashboards/:/var/lib/grafana/dashboards/
