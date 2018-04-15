@@ -1,6 +1,6 @@
 # my global config
 global:
-  scrape_interval:     15s
+  scrape_interval:     3s
   evaluation_interval: 30s
 
 scrape_configs:
