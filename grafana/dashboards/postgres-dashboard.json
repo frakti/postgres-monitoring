@@ -53,7 +53,7 @@
   "gnetId": 455,
   "graphTooltip": 1,
   "id": null,
-  "iteration": 1519976772836,
+  "iteration": 1523818388195,
   "links": [],
   "panels": [
     {
@@ -61,7 +61,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${DS_POSTGRES}",
+      "datasource": "$DS_POSTGRES",
       "editable": true,
       "error": false,
       "fill": 1,
@@ -416,7 +416,7 @@
         "rgba(237, 129, 40, 0.89)",
         "rgba(50, 172, 45, 0.97)"
       ],
-      "datasource": "${DS_POSTGRES}",
+      "datasource": "$DS_POSTGRES",
       "decimals": 0,
       "editable": true,
       "error": false,
@@ -547,7 +547,7 @@
         "rgba(237, 129, 40, 0.89)",
         "rgba(245, 54, 54, 0.9)"
       ],
-      "datasource": "${DS_POSTGRES}",
+      "datasource": "$DS_POSTGRES",
       "decimals": 0,
       "editable": true,
       "error": false,
@@ -678,7 +678,7 @@
         "rgba(237, 129, 40, 0.89)",
         "rgba(50, 172, 45, 0.97)"
       ],
-      "datasource": "${DS_POSTGRES}",
+      "datasource": "$DS_POSTGRES",
       "decimals": null,
       "editable": true,
       "error": false,
@@ -805,7 +805,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${DS_POSTGRES}",
+      "datasource": "$DS_POSTGRES",
       "decimals": 1,
       "editable": true,
       "error": false,
@@ -1141,7 +1141,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${DS_POSTGRES}",
+      "datasource": "$DS_POSTGRES",
       "fill": 0,
       "gridPos": {
         "h": 7,
@@ -1177,7 +1177,8 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "rate(pg_stat_user_tables_seq_tup_read{schemaname=\"$db\", job=~\"$job\"}[1m])  > 0",
+          "expr": "rate(pg_stat_user_tables_seq_tup_read{instance=\"$host\",schemaname=~\"$db\"}[1m])  > 0",
+          "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "{{relname}}",
           "refId": "A",
@@ -1225,7 +1226,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${DS_POSTGRES}",
+      "datasource": "$DS_POSTGRES",
       "fill": 0,
       "gridPos": {
         "h": 7,
@@ -1261,7 +1262,9 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "rate(pg_stat_user_tables_idx_scan{schemaname=\"$db\",job=~\"$job\"}[1m])  > 0",
+          "expr": "rate(pg_stat_user_tables_idx_scan{instance=\"$host\",schemaname=~\"$db\"}[1m])  > 0",
+          "format": "time_series",
+          "interval": "",
           "intervalFactor": 1,
           "legendFormat": "{{relname}}",
           "metric": "pg_stat_user_tables_idx_scan",
@@ -1310,7 +1313,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${DS_POSTGRES}",
+      "datasource": "$DS_POSTGRES",
       "editable": true,
       "error": false,
       "fill": 1,
@@ -1489,7 +1492,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${DS_POSTGRES}",
+      "datasource": "$DS_POSTGRES",
       "fill": 1,
       "gridPos": {
         "h": 7,
@@ -1549,11 +1552,12 @@
       },
       "yaxes": [
         {
+          "decimals": null,
           "format": "short",
           "label": null,
           "logBase": 1,
           "max": null,
-          "min": null,
+          "min": "0",
           "show": true
         },
         {
@@ -1571,7 +1575,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${DS_POSTGRES}",
+      "datasource": "$DS_POSTGRES",
       "description": "Long-running transactions are bad because they prevent Postgres from vacuuming old data. This causes database bloat and, in extreme circumstances, shutdown due to transaction ID (xid) wraparound. Transactions should be kept as short as possible, ideally less than a minute.",
       "fill": 1,
       "gridPos": {
@@ -1654,7 +1658,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${DS_POSTGRES}",
+      "datasource": "$DS_POSTGRES",
       "decimals": 0,
       "fill": 1,
       "gridPos": {
@@ -1749,7 +1753,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${DS_POSTGRES}",
+      "datasource": "$DS_POSTGRES",
       "editable": true,
       "error": false,
       "fill": 1,
@@ -1812,6 +1816,7 @@
       },
       "yaxes": [
         {
+          "decimals": null,
           "format": "percentunit",
           "label": null,
           "logBase": 1,
@@ -1834,7 +1839,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${DS_POSTGRES}",
+      "datasource": "$DS_POSTGRES",
       "editable": true,
       "error": false,
       "fill": 1,
@@ -1923,7 +1928,7 @@
   "templating": {
     "list": [
       {
-        "allValue": "postgres-exporter-ao|postgres-exporter-bi|postgres-exporter-core",
+        "allValue": ".*",
         "current": {},
         "datasource": "$DS_POSTGRES",
         "hide": 1,
@@ -2030,5 +2035,5 @@
   "timezone": "browser",
   "title": "Postgres",
   "uid": "7fB7bYekcb",
-  "version": 7
+  "version": 1
 }
