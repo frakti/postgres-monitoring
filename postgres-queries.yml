@@ -196,22 +196,22 @@ pg_table_bloat:
         usage: "LABEL"
         description: "Name of this table"
     - real_size:
-        usage: "COUNTER"
+        usage: "GAUGE"
         description: "Real size of the table"
     - extra_size:
-        usage: "COUNTER"
+        usage: "GAUGE"
         description: "Estimated extra size not used/needed in the table. This extra size is composed by the fillfactor, bloat and alignment padding spaces"
     - extra_ratio:
-        usage: "COUNTER"
+        usage: "GAUGE"
         description: "Estimated ratio of the real size used by extra_size"
     - bloat_size:
-        usage: "COUNTER"
+        usage: "GAUGE"
         description: "Estimated size of the bloat without the extra space kept for the fillfactor"
     - bloat_ratio:
-        usage: "COUNTER"
+        usage: "GAUGE"
         description: "Estimated ratio of the real size used by bloat_size"
     - fillfactor:
-        usage: "COUNTER"
+        usage: "GAUGE"
         description: "The fillfactor of the table"
     - is_na:
         usage: "LABEL"
@@ -383,22 +383,22 @@ pg_index_bloat:
         usage: "LABEL"
         description: "Name of this index"
     - real_size:
-        usage: "COUNTER"
+        usage: "GAUGE"
         description: "Real size of the index"
     - extra_size:
-        usage: "COUNTER"
+        usage: "GAUGE"
         description: "Estimated extra size not used/needed by the index. This extra size is composed by the fillfactor, bloat and alignment padding spaces"
     - extra_ratio:
-        usage: "COUNTER"
+        usage: "GAUGE"
         description: "Estimated ratio of the real size used by extra_size"
     - bloat_size:
-        usage: "COUNTER"
+        usage: "GAUGE"
         description: "Estimated size of the bloat without the extra space kept for the fillfactor"
     - bloat_ratio:
-        usage: "COUNTER"
+        usage: "GAUGE"
         description: "Estimated ratio of the real size used by bloat_size"
     - fillfactor:
-        usage: "COUNTER"
+        usage: "GAUGE"
         description: "The fillfactor of the index"
     - is_na:
         usage: "LABEL"
