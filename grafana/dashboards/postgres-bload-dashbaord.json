@@ -32,7 +32,7 @@
   "gnetId": 455,
   "graphTooltip": 1,
   "id": null,
-  "iteration": 1523859558196,
+  "iteration": 1523908487423,
   "links": [],
   "panels": [
     {
@@ -288,7 +288,7 @@
       "thresholds": [],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Top Bloated Tables ratio",
+      "title": "Top Bloated Index ratio",
       "tooltip": {
         "msResolution": true,
         "shared": true,
@@ -326,7 +326,7 @@
     },
     {
       "aliasColors": {},
-      "bars": false,
+      "bars": true,
       "dashLength": 10,
       "dashes": false,
       "datasource": "$DS_POSTGRES",
@@ -343,19 +343,19 @@
       "height": "295",
       "id": 25,
       "legend": {
-        "alignAsTable": true,
+        "alignAsTable": false,
         "avg": false,
-        "current": true,
+        "current": false,
         "max": false,
         "min": false,
-        "rightSide": true,
-        "show": true,
+        "rightSide": false,
+        "show": false,
         "sort": "max",
         "sortDesc": true,
         "total": false,
-        "values": true
+        "values": false
       },
-      "lines": true,
+      "lines": false,
       "linewidth": 1,
       "links": [],
       "nullPointMode": "connected",
@@ -363,12 +363,7 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "seriesOverrides": [
-        {
-          "alias": "returned",
-          "yaxis": 2
-        }
-      ],
+      "seriesOverrides": [],
       "spaceLength": 10,
       "stack": false,
       "steppedLine": false,
@@ -392,6 +387,7 @@
               "type": "fill"
             }
           ],
+          "hide": false,
           "instant": false,
           "intervalFactor": 2,
           "legendFormat": "{{tblname}}",
@@ -435,7 +431,7 @@
       "title": "Real tables size",
       "tooltip": {
         "msResolution": true,
-        "shared": true,
+        "shared": false,
         "sort": 0,
         "value_type": "cumulative"
       },
@@ -443,10 +439,12 @@
       "type": "graph",
       "xaxis": {
         "buckets": null,
-        "mode": "time",
+        "mode": "series",
         "name": null,
         "show": true,
-        "values": []
+        "values": [
+          "current"
+        ]
       },
       "yaxes": [
         {
@@ -464,13 +462,13 @@
           "logBase": 1,
           "max": null,
           "min": null,
-          "show": true
+          "show": false
         }
       ]
     },
     {
       "aliasColors": {},
-      "bars": false,
+      "bars": true,
       "dashLength": 10,
       "dashes": false,
       "datasource": "$DS_POSTGRES",
@@ -487,19 +485,19 @@
       "height": "295",
       "id": 27,
       "legend": {
-        "alignAsTable": true,
+        "alignAsTable": false,
         "avg": false,
-        "current": true,
+        "current": false,
         "max": false,
         "min": false,
-        "rightSide": true,
-        "show": true,
+        "rightSide": false,
+        "show": false,
         "sort": "max",
         "sortDesc": true,
         "total": false,
-        "values": true
+        "values": false
       },
-      "lines": true,
+      "lines": false,
       "linewidth": 1,
       "links": [],
       "nullPointMode": "connected",
@@ -520,7 +518,7 @@
         {
           "alias": "fetched",
           "dsType": "prometheus",
-          "expr": "pg_table_bloat_real_size{schemaname=~\"$db\",job=~\"$job\"} > 1000000",
+          "expr": "pg_index_bloat_real_size{schemaname=~\"$db\",job=~\"$job\"} > 1000000",
           "format": "time_series",
           "groupBy": [
             {
@@ -537,8 +535,9 @@
             }
           ],
           "instant": false,
+          "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "{{tblname}}",
+          "legendFormat": "{{tblname}}.{{idxname}}",
           "measurement": "postgresql",
           "policy": "default",
           "refId": "A",
@@ -579,7 +578,7 @@
       "title": "Real tables size",
       "tooltip": {
         "msResolution": true,
-        "shared": true,
+        "shared": false,
         "sort": 0,
         "value_type": "cumulative"
       },
@@ -587,10 +586,12 @@
       "type": "graph",
       "xaxis": {
         "buckets": null,
-        "mode": "time",
+        "mode": "series",
         "name": null,
         "show": true,
-        "values": []
+        "values": [
+          "current"
+        ]
       },
       "yaxes": [
         {
@@ -608,7 +609,7 @@
           "logBase": 1,
           "max": null,
           "min": null,
-          "show": true
+          "show": false
         }
       ]
     },
@@ -1019,5 +1020,5 @@
   "timezone": "browser",
   "title": "Postgres - Bloat",
   "uid": "8d16DDZmz",
-  "version": 12
+  "version": 4
 }
